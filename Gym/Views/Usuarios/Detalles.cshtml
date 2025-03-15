@@ -1,0 +1,21 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "Detalles de usuario";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg" style="max-width: 400px; margin: auto;">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Información del Usuario</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Nombre:</strong> @Model.Nombre</p>
+            <p><strong>Correo:</strong> @Model.Correo</p>
+            <p><strong>Teléfono:</strong> @Model.Telefono</p>
+           
+        </div>
+        <div class="card-footer text-center">
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Volver</a>
+        </div>
+    </div>
+</div>

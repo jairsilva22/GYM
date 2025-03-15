@@ -1,0 +1,128 @@
+﻿@model UsuarioViewModel
+@{
+    ViewData["Title"] = "Información del Usuario";
+}
+<style>
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        background-color: #f9f9f9;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+
+    .icon-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .client-avatar {
+        width: 95px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .text-muted {
+        font-size: 0.9rem;
+    }
+
+    .font-weight-bold {
+        font-weight: 600;
+    }
+
+    .icon-text {
+        font-size: 1.1rem;
+    }
+
+    .row-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .icon-size {
+        font-size: 1.2rem;
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    .section-title {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #444;
+    }
+</style>
+
+<div class="card shadow-sm rounded-lg border-light" style="max-width: 700px; margin: auto;">
+    <div class="card-body">
+        <!-- Información básica del usuario -->
+        <div class="d-flex align-items-center mb-4">
+            <div class="icon-container me-4">
+                <img src="~/img/usuario.png" alt="Cliente" class="client-avatar">
+            </div>
+            <div>
+                <h5 class="card-title text-dark">@Model.Nombre</h5>
+                <p class="card-text text-muted">
+                    <i class="bi bi-envelope icon-size"></i>@Model.Correo
+                </p>
+                <p class="card-text text-muted">
+                    <i class="bi bi-phone icon-size"></i>@Model.Telefono
+                </p>
+            </div>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="row mb-3">
+            <div class="col-6">
+                <div class="row-icon">
+                    <i class="bi bi-calendar-date icon-size"></i>
+                    <p class="section-title">Fecha de Inscripción:</p>
+                </div>
+                <p class="text-dark">@Model.FechaInscripcion.ToString("dd/MM/yyyy")</p>
+            </div>
+            <div class="col-6">
+                <div class="row-icon">
+                    <i class="bi bi-calendar-check icon-size"></i>
+                    <p class="section-title">Meses Inscritos:</p>
+                </div>
+                <p class="text-dark">@Model.MesesInscritos</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="row-icon">
+                    <i class="bi bi-credit-card icon-size"></i>
+                    <p class="section-title">Último Pago:</p>
+                </div>
+                <p class="text-dark">@Model.UltimoPago.ToString("dd/MM/yyyy")</p>
+            </div>
+            <div class="col-6">
+                <div class="row-icon">
+                    <i class="bi bi-calendar-plus icon-size"></i>
+                    <p class="section-title">Próximo Pago:</p>
+                </div>
+                <p class="text-dark">@Model.ProximoPago.ToString("dd/MM/yyyy")</p>
+            </div>
+        </div>
+
+        <!-- Botón de acción -->
+        <div class="d-flex justify-content-end mt-4">
+            <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+        </div>
+    </div>
+</div>

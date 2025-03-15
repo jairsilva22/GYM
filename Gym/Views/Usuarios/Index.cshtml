@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Usuario>
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="fw-bold text-uppercase"> Miembros</h2>
+        <a asp-action="Crear" class="btn btn-dark rounded-pill shadow">
+            <i class="bi bi-person-plus-fill"></i> Crear Usuario
+        </a>
+    </div>
+	<p>Lista de miembros registrados en el sistema.</p>
+    <div class="mt-3">
+        <div class="card shadow-lg border-0">
+            <div class="card-body">
+                <table class="table table-hover align-middle table-bordered rounded" id="tablaUsuarios">
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th><i class="bi bi-person-circle"></i> Nombre</th>
+                            <th><i class="bi bi-envelope-fill"></i> Correo</th>
+                            <th><i class="bi bi-telephone-fill"></i> Teléfono</th>
+                            <th><i class="bi bi-tools"></i> Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="shadow-sm">
+                                <td>
+                                    <i class="bi bi-person"></i> @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    <i class="bi bi-envelope"></i> @Html.DisplayFor(modelItem => item.Correo)
+                                </td>
+                                <td>
+                                    <i class="bi bi-telephone"></i> @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td class="text-center">
+                                    <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning btn-sm rounded-pill">
+                                        <i class="bi bi-pencil-square"></i> Editar
+                                    </a>
+                                    <a asp-action="Eliminar" asp-route-id="@item.Id" class="btn btn-danger btn-sm rounded-pill">
+                                        <i class="bi bi-trash-fill"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tablaUsuarios').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+}
+

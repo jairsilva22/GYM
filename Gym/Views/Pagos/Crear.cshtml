@@ -1,0 +1,84 @@
+﻿@model PagoViewModel
+@{
+    ViewData["Title"] = "Crear Pago";
+}
+
+<div class="container d-flex justify-content-center align-items-start mt-5">
+    <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%; background-color: white; color: black;">
+        <h2 style="color: black; font-weight: bold;">Pago Membresía</h2>
+        <p>Por favor, complete el siguiente formulario para realizar el pago de la membresía.</p>
+        <form asp-action="Crear">
+            <!-- Selección del Usuario con Autocomplete -->
+            <div class="mb-3">
+                <label asp-for="UsuarioId" class="form-label">Nombre del Cliente</label>
+                <select asp-for="UsuarioId" asp-items="Model.Usuarios" class="form-select select2">
+                    <option value="">Seleccione un Cliente</option>
+                </select>
+                <span asp-validation-for="UsuarioId" class="text-danger"></span>
+            </div>
+
+            <!-- Selección de la Mensualidad -->
+            <div class="mb-3">
+                <label asp-for="MensualidadId" class="form-label">Tipo de Mensualidad</label>
+                <select id="MensualidadId" name="MensualidadId" class="form-select">
+                    <option value="">Seleccione una mensualidad</option>
+                    @foreach (var mensualidad in Model.Mensualidades)
+                    {
+                        <option value="@mensualidad.Value" data-precio="@mensualidad.Precio">@mensualidad.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="MensualidadId" class="text-danger"></span>
+            </div>
+
+            <!-- Campo de Monto -->
+            <div class="mb-3">
+                <label asp-for="Monto" class="form-label">Monto a Pagar</label>
+                <input asp-for="Monto" class="form-control" readonly />
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+
+            <!-- Fecha de Pago -->
+            <div class="mb-3">
+                <label asp-for="FechaPago" class="form-label">Fecha de Pago</label>
+                <input asp-for="FechaPago" type="date" class="form-control" id="fechaPago" />
+                <span asp-validation-for="FechaPago" class="text-danger"></span>
+            </div>
+
+            <!-- Fecha de Expiración -->
+            <div class="mb-3">
+                <label asp-for="FechaExpiracion" class="form-label">Fecha de Expiración</label>
+                <input asp-for="FechaExpiracion" type="date" class="form-control" id="fechaExpiracion" />
+                <span asp-validation-for="FechaExpiracion" class="text-danger"></span>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-lg bg-dark text-light">💳 Guardar Pago</button>
+                <a href="/Pagos" class="btn btn-primary btn-lg text-light">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <!-- Asegúrate de tener jQuery y Select2 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function () {
+            // Habilitar Select2 para el campo de selección de usuario
+            $(".select2").select2({
+                placeholder: "Buscar cliente...",
+                allowClear: true
+            });
+
+            // Actualizar monto cuando cambie la mensualidad
+            $("#MensualidadId").change(function () {
+                let precio = $(this).find(":selected").data("precio");
+                $("#Monto").val(precio);
+            });
+        });
+    </script>
+}
