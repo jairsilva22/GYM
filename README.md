@@ -1,8 +1,8 @@
 # 🏋️‍♂️ Sistema de Gestión de Gimnasio / Gym Management System
 
-Sistema web para la gestión de gimnasios, desarrollado con .NET y SQL Server. Permite controlar miembros, entrenadores, membresías y pagos a través de una interfaz moderna, optimizada para escritorio y móvil.
+Sistema web para la gestión de gimnasios, desarrollado con .NET y SQL Server. Permite controlar miembros, entrenadores, membresías y pagos.
 
-Web system for gym management, built with .NET and SQL Server. It allows administrators to manage members, trainers, memberships, and payments through a modern, responsive interface.
+Web system for gym management, built with .NET and SQL Server. It allows administrators to manage members, trainers, memberships, and payments .
 
 ---
 
