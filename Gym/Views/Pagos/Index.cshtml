@@ -5,55 +5,65 @@
 }
 
 <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <div>
-            <h2 class="fw-bold text-uppercase"><i class="bi bi-wallet2"></i> Pagos</h2>
-        </div>
 
+    <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-white shadow-sm rounded-4">
         <div>
-            <a asp-action="Crear" class="btn btn-success rounded-pill shadow-sm">
-                <i class="bi bi-cash-coin"></i> Agregar un pago
+            <h2 class="fw-bold text-dark mb-0 text-uppercase">
+                <i class="bi bi-people-fill text-primary me-2"></i> Pagos
+            </h2>
+            <small class="text-muted">Pagos registrados en el sistema</small>
+        </div>
+        <div>
+            <a asp-action="Crear" class="btn btn-success rounded-pill shadow-sm me-2 px-4">
+                <i class="bi bi-cash-coin"></i> Agregar Pago
             </a>
-            <a asp-action="Index" asp-controller="Dashboard" class="btn btn-secondary rounded-pill shadow-sm">
+            <a asp-action="Index" asp-controller="Dashboard" class="btn btn-outline-dark rounded-pill shadow-sm px-4">
                 <i class="bi bi-bar-chart-line-fill"></i> Dashboard
             </a>
         </div>
+       
     </div>
 
-    <div class="mt-3">
-        <p>Lista de pagos realizados por los miembros.</p>
-        <div class="card shadow-lg border-0">
-            <div class="card-body">
-                <table class="table table-hover table-bordered mb-3 rounded" id="tablaMensualidades">
-                    <thead class="table-dark text-center">
+
+
+	<div class="card border-0 shadow-lg rounded-4">
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center table-bordered" id="tablaMensualidades">
+                    <thead class="" style="background:#cfe2ff; ">
                         <tr>
-                            <th>Id</th>
-                            <th>Nombre del Cliente</th>
-                            <th>Mensualidad</th>
+                            <th>#</th>
+                            <th>Cliente</th>
+                            <th>Membresía</th>
                             <th>Monto</th>
-                            <th>Fecha de Pago</th>
-                            <th>Fecha de Expiración</th>
+                            <th>Fecha Pago</th>
+                            <th>Vencimiento</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr class="shadow-sm">
-                                <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Miembro)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Membresia)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Monto)</td>
-                                <td>@Html.DisplayFor(modelItem => item.FechaPago)</td>
-                                <td>@Html.DisplayFor(modelItem => item.FechaExpiracion)</td>
-
-                                <td class="text-center">
-                                    <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning btn-sm rounded-pill">
-                                        <i class="bi bi-pencil-square"></i> Editar
-                                    </a>
-                                    <a asp-action="Eliminar" asp-route-id="@item.Id" class="btn btn-danger btn-sm rounded-pill">
-                                        <i class="bi bi-trash-fill"></i> Eliminar
-                                    </a>
+                            <tr>
+                                <td class="fw-bold">@item.Id</td>
+                                <td>@item.Miembro</td>
+                                <td><span class="badge bg-primary text-white">@item.Membresia</span></td>
+                                <td>
+                                    <span class="badge bg-success fw-semibold">
+                                        $@item.Monto.ToString("0.00")
+                                    </span>
+                                </td>
+                                <td>@item.FechaPago.ToString("dd/MM/yyyy")</td>
+                                <td>@item.FechaExpiracion.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning rounded-circle" title="Editar">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+                                        <a asp-action="Eliminar" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger rounded-circle" title="Eliminar">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         }
@@ -63,6 +73,7 @@
         </div>
     </div>
 </div>
+
 
 @section Scripts {
     <script>

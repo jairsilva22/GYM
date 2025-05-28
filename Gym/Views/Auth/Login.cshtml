@@ -1,0 +1,178 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+
+    <style>
+        :root {
+            --yellow: #faff00;
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--black);
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1920x1080/?gym');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            background-color: var(--dark-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-header {
+            background-color: var(--yellow);
+            color: var(--black);
+            padding: 25px;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 5px solid var(--black);
+        }
+
+        .login-body {
+            padding: 30px;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            padding: 15px 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+            .form-control:focus {
+                background-color: rgba(255, 255, 255, 0.12);
+                box-shadow: 0 0 0 3px rgba(250, 255, 0, 0.25);
+                color: white;
+            }
+
+            .form-control::placeholder {
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+        .btn-login {
+            background-color: var(--yellow);
+            color: var(--black);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+            .btn-login:hover {
+                background-color: #e0e500;
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(250, 255, 0, 0.4);
+            }
+
+        .error-message {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: #ff6b6b;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .input-icon-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: var(--yellow);
+        }
+
+        .icon-input {
+            padding-left: 45px;
+        }
+
+        .login-footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 0 30px 30px 30px;
+            font-size: 14px;
+        }
+
+        .gym-brand {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .logo-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+    </style>
+
+
+    <div class="login-container">
+        <div class="login-header">
+            <i class="bi bi-lightning-charge-fill logo-icon"></i>
+            <div class="gym-brand">GYM</div>
+            <p class="mb-0">ACCESO AL SISTEMA</p>
+        </div>
+
+        <div class="login-body">
+            @if (ViewBag.Error != null)
+            {
+                <div class="error-message">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    @ViewBag.Error
+                </div>
+            }
+
+            <form method="post" asp-action="Login">
+                <div class="input-icon-wrapper mb-3">
+                    <i class="bi bi-envelope-fill input-icon"></i>
+                    <input type="email" name="email" class="form-control icon-input" placeholder="Correo electrónico" required autofocus />
+                </div>
+
+                <div class="input-icon-wrapper mb-4">
+                    <i class="bi bi-lock-fill input-icon"></i>
+                    <input type="password" name="password" class="form-control icon-input" placeholder="Contraseña" required />
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-login">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>
+                        Iniciar Sesión
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="login-footer">
+            <p>POWER GYM © @DateTime.Now.Year - Todos los derechos reservados</p>
+        </div>
+    </div>
+
+   

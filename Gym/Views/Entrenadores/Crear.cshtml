@@ -1,0 +1,62 @@
+﻿@model Entrenador
+@{
+	ViewBag.Title = "Crear entrenador";
+}
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-dark text-white">
+                        <h2 class="mb-0">
+                            <i class="bi bi-person-plus me-2"></i>Nuevo Entrenador
+                        </h2>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" asp-action="Crear">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="Nombre" asp-for="Nombre" placeholder="Nombre" required>
+                                        <label for="Nombre"><i class="bi bi-person me-2"></i>Nombre</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="Email" asp-for="Email" placeholder="Email" required>
+                                        <label for="Email"><i class="bi bi-envelope me-2"></i>Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="Telefono" asp-for="Telefono" placeholder="Teléfono">
+                                        <label for="Telefono"><i class="bi bi-telephone me-2"></i>Teléfono</label>
+                                    </div>
+                                </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="PasswordHash" asp-for="PasswordHash" placeholder="PasswordHash">
+                                    <label for="PasswordHash"><i class="bi bi-telephone me-2"></i>Contraseña</label>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                <button type="button" class="btn btn-outline-secondary me-md-2">
+                                    <i class="bi bi-x-circle me-1"></i>Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save me-1"></i>Guardar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+

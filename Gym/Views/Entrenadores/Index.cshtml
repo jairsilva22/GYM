@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Entrenador>
+
+@{
+    ViewData["Title"] = "Lista de Entrenadores";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-5 p-4 bg-light rounded-4 shadow-sm border border-1">
+        <div class="d-flex align-items-center">
+            <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                <i class="bi bi-people-fill fs-4"></i>
+            </div>
+            <div>
+                <h2 class="fw-bold mb-0 text-dark">Entrenadores</h2>
+                <small class="text-muted">Gestión de entrenadores del gimnasio</small>
+            </div>
+        </div>
+        <a asp-action="Crear" class="btn btn-success btn-lg rounded-pill shadow px-4 d-flex align-items-center">
+            <i class="bi bi-plus-circle me-2 fs-5"></i> Nuevo Entrenador
+        </a>
+    </div>
+
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle me-2"></i>No hay entrenadores registrados.
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var entrenador in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-lg rounded-4">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/men/@(entrenador.Id % 100).jpg"
+                                 class="rounded-circle mb-3"
+                                 alt="Foto de @entrenador.Nombre"
+                                 width="100" height="100"
+                                 style="object-fit: cover; border: 4px solid #f1f1f1;">
+
+                            <h5 class="card-title fw-bold">@entrenador.Nombre</h5>
+                            <p class="card-text text-muted mb-1">
+                                <i class="bi bi-envelope-fill me-1"></i> @entrenador.Email
+                            </p>
+                            <p class="card-text text-muted">
+                                <i class="bi bi-telephone-fill me-1"></i> @entrenador.Telefono
+                            </p>
+
+                            <div class="d-flex justify-content-center gap-2 mt-3">
+                                <a asp-action="Editar" asp-route-id="@entrenador.Id"
+                                   class="btn btn-outline-warning btn-sm rounded-pill">
+                                    <i class="bi bi-pencil-fill"></i> Editar
+                                </a>
+                                <a asp-action="Eliminar" asp-route-id="@entrenador.Id"
+                                   class="btn btn-outline-danger btn-sm rounded-pill">
+                                    <i class="bi bi-trash-fill"></i> Eliminar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

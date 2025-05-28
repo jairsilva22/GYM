@@ -3,49 +3,62 @@
 	ViewData["Title"] = "Index";
 }
 
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center">
-        <h2 class="text-dark">
-           Planes de Membresía
-        </h2>
-        <a asp-action="Crear" class="btn btn-success shadow">
-            <i class="bi bi-plus-circle"></i> Agregar Plan
+<div class="container mt-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-white shadow-sm rounded-3">
+        <div>
+            <h2 class="fw-bold text-dark mb-0">
+                <i class="bi bi-stars text-warning me-2"></i> Membresías
+            </h2>
+            <small class="text-muted">Administra los planes activos del gimnasio</small>
+        </div>
+        <a asp-action="Crear" class="btn btn-lg btn-primary d-flex align-items-center gap-2 shadow-sm rounded-3">
+            <i class="bi bi-plus-circle-fill fs-5"></i> Agregar Plan
         </a>
     </div>
+
 
     <div class="row mt-3">
         @foreach (var item in Model)
         {
             <div class="col-md-4 mb-4">
-                <div class="card shadow-lg border-0 text-center">
-                    <div class="card-header text-white" style="background:black; ">
-						
-					</div>
-					
+                <div class="card h-100 shadow-lg border-0 rounded-4 overflow-hidden">
+                    <!-- Imagen superior aleatoria -->
+                    <img src="https://loremflickr.com/400/250/gym,fitness"
+                         class="card-img-top object-fit-cover" style="height: 200px;" alt="Membresía">
 
-                    <div class="card-body">
-                        <img src="~/img/tarjeta-de-membresia.png" style="width:70px" />
-                        <i class="bi bi-dumbbell text-primary" style="font-size: 4rem;"></i>
-                        <h4 class="mt-3 text-dark">@item.Tipo</h4>
 
-                        <h5 class="mt-2">
-                            <span class="badge bg-success">$@item.Precio</span>
-                        </h5>
-                        <p class="text-muted">Duración: <strong>@item.Duracion días</strong></p>
+                    <div class="card-body d-flex flex-column text-center p-4">
+                        <!-- Título del tipo de membresía -->
+                        <h4 class="text-dark fw-bold mb-2">@item.Tipo</h4>
 
-                        <div class="d-flex justify-content-center mt-3">
-                            <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-sm rounded-circle shadow-sm me-2"
-                               data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" style="background: #c6ba02; color:white">
-                                <i class="bi bi-pencil-square"></i>
+                        <!-- Precio con estilo moderno -->
+                        <span class="badge mb-3 text-dark"
+                              style="background: linear-gradient(135deg, #FFD700, #FFEF8B); font-size: 1.1rem; padding: 0.6rem 1rem; border-radius: 1rem;">
+                            $@item.Precio
+                        </span>
+
+                        <!-- Duración -->
+                        <p class="text-muted mb-4">Duración: <strong>@item.Duracion días</strong></p>
+
+                        <!-- Botones -->
+                        <div class="d-flex justify-content-center gap-3 mt-auto">
+                            <a asp-action="Editar" asp-route-id="@item.Id"
+                               class="btn btn-outline-warning btn-sm rounded-pill shadow-sm px-3"
+                               data-bs-toggle="tooltip" title="Editar">
+                                <i class="bi bi-pencil-fill me-1"></i> Editar
                             </a>
-                            <a asp-action="Eliminar" asp-route-id="@item.Id" class="btn btn-danger btn-sm rounded-circle shadow-sm"
-                               data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar">
-                                <i class="bi bi-trash"></i>
+
+                            <a asp-action="Eliminar" asp-route-id="@item.Id"
+                               class="btn btn-outline-danger btn-sm rounded-pill shadow-sm px-3"
+                               data-bs-toggle="tooltip" title="Eliminar">
+                                <i class="bi bi-trash-fill me-1"></i> Eliminar
                             </a>
                         </div>
                     </div>
                 </div>
+
             </div>
+
         }
     </div>
 </div>

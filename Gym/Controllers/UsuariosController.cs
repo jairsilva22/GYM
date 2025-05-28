@@ -1,9 +1,11 @@
 ﻿using Gym.Models;
 using Gym.Servicios;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gym.Controllers
 {
+    //[Authorize]
     public class UsuariosController : Controller
     {
         private readonly IRepositorioUsuarios repositorioUsuarios;

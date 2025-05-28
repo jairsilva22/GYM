@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\vog20\\OneDrive\\Escritorio\\NET curso\\Gym\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1ACF059D-5FC9-4F30-A72C-FE41D9B37AEF}|Gym\\Gym.csproj|c:\\users\\vog20\\onedrive\\escritorio\\net curso\\gym\\gym\\views\\mensualidades\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1ACF059D-5FC9-4F30-A72C-FE41D9B37AEF}|Gym\\Gym.csproj|solutionrelative:gym\\views\\mensualidades\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\vog20\\OneDrive\\Escritorio\\NET curso\\Gym\\Gym\\Views\\Mensualidades\\Index.cshtml",
+              "RelativeDocumentMoniker": "Gym\\Views\\Mensualidades\\Index.cshtml",
+              "ToolTip": "C:\\Users\\vog20\\OneDrive\\Escritorio\\NET curso\\Gym\\Gym\\Views\\Mensualidades\\Index.cshtml*",
+              "RelativeToolTip": "Gym\\Views\\Mensualidades\\Index.cshtml*",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T00:22:14.263Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
